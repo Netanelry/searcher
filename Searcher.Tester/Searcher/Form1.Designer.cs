@@ -39,6 +39,7 @@
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.radioButton1 = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.radioButton2 = new System.Windows.Forms.RadioButton();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -153,12 +154,24 @@
             this.panel1.Size = new System.Drawing.Size(414, 127);
             this.panel1.TabIndex = 10;
             // 
+            // radioButton2
+            // 
+            this.radioButton2.AutoSize = true;
+            this.radioButton2.Location = new System.Drawing.Point(198, 325);
+            this.radioButton2.Name = "radioButton2";
+            this.radioButton2.Size = new System.Drawing.Size(103, 20);
+            this.radioButton2.TabIndex = 11;
+            this.radioButton2.TabStop = true;
+            this.radioButton2.Text = "radioButton2";
+            this.radioButton2.UseVisualStyleBackColor = true;
+            // 
             // Searcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
             this.ClientSize = new System.Drawing.Size(428, 450);
+            this.Controls.Add(this.radioButton2);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chosenPath);
@@ -188,6 +201,7 @@
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.RadioButton radioButton1;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton radioButton2;
     }
 }
 
