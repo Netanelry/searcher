@@ -20,14 +20,14 @@ namespace Searcher.BusinessLogic
         {
             string[] allFiles = GetAllFiles(directory);
             int counter = 0;
-            string[] searchResults = null;
+            string[] searchResults = new string[] { };
             foreach (string file in allFiles)
             {
                 string name = Path.GetFileName(file);
                 if (name.Contains(pattern))
                 {
-                    counter++;
                     searchResults.Append(file);
+                    counter++;
                 }
             }
             if (counter == 0)

@@ -86,5 +86,23 @@
   <ItemGroup>
     <None Include="Resources\documents_folder_188751.png" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder-search-4341327_120553.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder-search-4341327_1205531.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\iconfinder-search-4341327_1205532.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Searcher.BusinessLogic\Searcher.BusinessLogic.csproj">
+      <Project>{dae0a66f-e555-40ff-a795-8ebe3f15928e}</Project>
+      <Name>Searcher.BusinessLogic</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

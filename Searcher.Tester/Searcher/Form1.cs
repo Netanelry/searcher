@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -12,9 +13,12 @@ namespace Searcher
 {
     public partial class Searcher : Form
     {
+        string currentPath = "";
+        BusinessLogic.BusinessLogic bl;
         public Searcher()
         {
             InitializeComponent();
+            bl = new BusinessLogic.BusinessLogic();
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -46,11 +50,12 @@ namespace Searcher
         {
             FolderBrowserDialog fbd = new FolderBrowserDialog();
             fbd.RootFolder = Environment.SpecialFolder.Desktop;
-            fbd.Description = "Choose Folder";
+            fbd.Description = "בחר תיקייה";
             fbd.ShowNewFolderButton = false;
             if (fbd.ShowDialog() == DialogResult.OK)
             {
                 chosenPath.Text = fbd.SelectedPath;
+                currentPath = fbd.SelectedPath;
             }
         }
 
@@ -62,6 +67,33 @@ namespace Searcher
         private void allFilesButton_CheckedChanged(object sender, EventArgs e)
         {
             
+        }
+
+        private void searchButton_Click(object sender, EventArgs e)
+        {
+            string[] listOfFiles = new string[] {};
+            if (!Directory.Exists(currentPath))
+            {
+                MessageBox.Show("תיקייה לא קיימת");
+                return;
+            }
+            if (allFilesButton.Checked)
+            {
+                listOfFiles = bl.GetAllFiles(currentPath);
+            }
+            else if (nameSearchButton.Checked)
+            {
+                string pattern = fileNameTextBox.Text;
+                listOfFiles = bl.GetFilesByName(currentPath, pattern);
+            }
+            string searchResults = "";
+            int counter = 0;
+            foreach (var result in listOfFiles)
+            {
+                counter++;
+                searchResults += counter + "." + result + "\n";
+            }
+            MessageBox.Show(searchResults);
         }
     }
 }

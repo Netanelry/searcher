@@ -79,5 +79,35 @@ namespace Searcher.Properties {
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_search_4341327_120553 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder-search-4341327_120553", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_search_4341327_1205531 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder-search-4341327_1205531", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap iconfinder_search_4341327_1205532 {
+            get {
+                object obj = ResourceManager.GetObject("iconfinder-search-4341327_1205532", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
     }
 }

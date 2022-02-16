@@ -30,16 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Searcher));
             this.chooseFolder = new System.Windows.Forms.Label();
-            this.Folder = new System.Windows.Forms.Button();
             this.chosenPath = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.allFilesButton = new System.Windows.Forms.RadioButton();
             this.nameSearchButton = new System.Windows.Forms.RadioButton();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.fileNameTextBox = new System.Windows.Forms.TextBox();
+            this.fileContextTextBox = new System.Windows.Forms.TextBox();
+            this.contextSearchButton = new System.Windows.Forms.RadioButton();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
+            this.FolderButtonExp = new System.Windows.Forms.Label();
+            this.searchButton = new System.Windows.Forms.Button();
+            this.Folder = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -54,23 +55,10 @@
             this.chooseFolder.Text = "בחר תיקייה";
             this.chooseFolder.Click += new System.EventHandler(this.label1_Click);
             // 
-            // Folder
-            // 
-            this.Folder.BackgroundImage = global::Searcher.Properties.Resources.documents_folder_188751;
-            this.Folder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
-            this.Folder.FlatAppearance.BorderSize = 0;
-            this.Folder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.Folder.Location = new System.Drawing.Point(109, 18);
-            this.Folder.Name = "Folder";
-            this.Folder.Size = new System.Drawing.Size(75, 51);
-            this.Folder.TabIndex = 2;
-            this.Folder.UseVisualStyleBackColor = true;
-            this.Folder.Click += new System.EventHandler(this.button1_Click);
-            // 
             // chosenPath
             // 
             this.chosenPath.Font = new System.Drawing.Font("Varela Round", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chosenPath.Location = new System.Drawing.Point(12, 75);
+            this.chosenPath.Location = new System.Drawing.Point(23, 75);
             this.chosenPath.Name = "chosenPath";
             this.chosenPath.Size = new System.Drawing.Size(404, 23);
             this.chosenPath.TabIndex = 3;
@@ -79,7 +67,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Varela Round", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label1.Location = new System.Drawing.Point(215, 118);
+            this.label1.Location = new System.Drawing.Point(233, 133);
             this.label1.Name = "label1";
             this.label1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.label1.Size = new System.Drawing.Size(201, 37);
@@ -90,7 +78,7 @@
             // 
             this.allFilesButton.AutoSize = true;
             this.allFilesButton.Font = new System.Drawing.Font("Varela Round", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.allFilesButton.Location = new System.Drawing.Point(258, 3);
+            this.allFilesButton.Location = new System.Drawing.Point(282, 13);
             this.allFilesButton.Name = "allFilesButton";
             this.allFilesButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.allFilesButton.Size = new System.Drawing.Size(139, 31);
@@ -104,7 +92,7 @@
             // 
             this.nameSearchButton.AutoSize = true;
             this.nameSearchButton.Font = new System.Drawing.Font("Varela Round", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.nameSearchButton.Location = new System.Drawing.Point(182, 40);
+            this.nameSearchButton.Location = new System.Drawing.Point(206, 47);
             this.nameSearchButton.Name = "nameSearchButton";
             this.nameSearchButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.nameSearchButton.Size = new System.Drawing.Size(215, 31);
@@ -113,65 +101,97 @@
             this.nameSearchButton.Text = "חיפוש בשם הקובץ:";
             this.nameSearchButton.UseVisualStyleBackColor = true;
             // 
-            // textBox1
+            // fileNameTextBox
             // 
-            this.textBox1.Font = new System.Drawing.Font("Varela Round", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox1.Location = new System.Drawing.Point(3, 46);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(169, 23);
-            this.textBox1.TabIndex = 7;
+            this.fileNameTextBox.Font = new System.Drawing.Font("Varela Round", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fileNameTextBox.Location = new System.Drawing.Point(20, 54);
+            this.fileNameTextBox.Name = "fileNameTextBox";
+            this.fileNameTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.fileNameTextBox.Size = new System.Drawing.Size(175, 23);
+            this.fileNameTextBox.TabIndex = 7;
+            this.fileNameTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // textBox2
+            // fileContextTextBox
             // 
-            this.textBox2.Font = new System.Drawing.Font("Varela Round", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.textBox2.Location = new System.Drawing.Point(3, 83);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(169, 23);
-            this.textBox2.TabIndex = 9;
+            this.fileContextTextBox.Font = new System.Drawing.Font("Varela Round", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.fileContextTextBox.Location = new System.Drawing.Point(20, 92);
+            this.fileContextTextBox.Name = "fileContextTextBox";
+            this.fileContextTextBox.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.fileContextTextBox.Size = new System.Drawing.Size(175, 23);
+            this.fileContextTextBox.TabIndex = 9;
+            this.fileContextTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // radioButton1
+            // contextSearchButton
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Varela Round", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.radioButton1.Location = new System.Drawing.Point(175, 77);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton1.Size = new System.Drawing.Size(222, 31);
-            this.radioButton1.TabIndex = 8;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "חיפוש בתוכן הקובץ:";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.contextSearchButton.AutoSize = true;
+            this.contextSearchButton.Font = new System.Drawing.Font("Varela Round", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.contextSearchButton.Location = new System.Drawing.Point(199, 84);
+            this.contextSearchButton.Name = "contextSearchButton";
+            this.contextSearchButton.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.contextSearchButton.Size = new System.Drawing.Size(222, 31);
+            this.contextSearchButton.TabIndex = 8;
+            this.contextSearchButton.TabStop = true;
+            this.contextSearchButton.Text = "חיפוש בתוכן הקובץ:";
+            this.contextSearchButton.UseVisualStyleBackColor = true;
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.textBox2);
-            this.panel1.Controls.Add(this.radioButton1);
-            this.panel1.Controls.Add(this.textBox1);
+            this.panel1.Controls.Add(this.fileContextTextBox);
+            this.panel1.Controls.Add(this.contextSearchButton);
+            this.panel1.Controls.Add(this.fileNameTextBox);
             this.panel1.Controls.Add(this.nameSearchButton);
             this.panel1.Controls.Add(this.allFilesButton);
-            this.panel1.Location = new System.Drawing.Point(12, 164);
+            this.panel1.Location = new System.Drawing.Point(3, 173);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(414, 127);
+            this.panel1.Size = new System.Drawing.Size(443, 127);
             this.panel1.TabIndex = 10;
             // 
-            // radioButton2
+            // FolderButtonExp
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(198, 325);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(103, 20);
-            this.radioButton2.TabIndex = 11;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "radioButton2";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.FolderButtonExp.AutoSize = true;
+            this.FolderButtonExp.Font = new System.Drawing.Font("Varela Round", 7.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.FolderButtonExp.Location = new System.Drawing.Point(59, 101);
+            this.FolderButtonExp.Name = "FolderButtonExp";
+            this.FolderButtonExp.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.FolderButtonExp.Size = new System.Drawing.Size(316, 17);
+            this.FolderButtonExp.TabIndex = 11;
+            this.FolderButtonExp.Text = "*לחץ על תמונת התיקייה על מנת לפתוח את בורר התיקיות";
+            this.FolderButtonExp.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // searchButton
+            // 
+            this.searchButton.BackgroundImage = global::Searcher.Properties.Resources.iconfinder_search_4341327_1205532;
+            this.searchButton.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.searchButton.FlatAppearance.BorderSize = 0;
+            this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.searchButton.Location = new System.Drawing.Point(23, 306);
+            this.searchButton.Name = "searchButton";
+            this.searchButton.Size = new System.Drawing.Size(83, 80);
+            this.searchButton.TabIndex = 12;
+            this.searchButton.UseVisualStyleBackColor = true;
+            this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
+            // 
+            // Folder
+            // 
+            this.Folder.BackgroundImage = global::Searcher.Properties.Resources.documents_folder_188751;
+            this.Folder.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Center;
+            this.Folder.FlatAppearance.BorderSize = 0;
+            this.Folder.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.Folder.Location = new System.Drawing.Point(109, 18);
+            this.Folder.Name = "Folder";
+            this.Folder.Size = new System.Drawing.Size(75, 51);
+            this.Folder.TabIndex = 2;
+            this.Folder.UseVisualStyleBackColor = true;
+            this.Folder.Click += new System.EventHandler(this.button1_Click);
             // 
             // Searcher
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(428, 450);
-            this.Controls.Add(this.radioButton2);
+            this.ClientSize = new System.Drawing.Size(455, 452);
+            this.Controls.Add(this.searchButton);
+            this.Controls.Add(this.FolderButtonExp);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.chosenPath);
@@ -197,11 +217,12 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.RadioButton allFilesButton;
         private System.Windows.Forms.RadioButton nameSearchButton;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.TextBox fileNameTextBox;
+        private System.Windows.Forms.TextBox fileContextTextBox;
+        private System.Windows.Forms.RadioButton contextSearchButton;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.RadioButton radioButton2;
+        private System.Windows.Forms.Label FolderButtonExp;
+        private System.Windows.Forms.Button searchButton;
     }
 }
 
