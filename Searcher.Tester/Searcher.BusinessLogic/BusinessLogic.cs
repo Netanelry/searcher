@@ -10,24 +10,26 @@ namespace Searcher.BusinessLogic
     public class BusinessLogic
     {
         //return all files
-        public string[] GetAllFiles(string directory)
+        public List <string> GetAllFiles(string directory)
         {
-            return Directory.GetFiles(directory);
+            string [] results = Directory.GetFiles(directory);
+            List<string> searchResults = results.ToList();
+            return searchResults;
         }
 
         //get file and string and return files with the string in name
-        public string[] GetFilesByName(string directory, string pattern)
+        public List<string> GetFilesByName(string directory, string pattern)
         {
-            string[] allFiles = GetAllFiles(directory);
+            List<string> allFiles = GetAllFiles(directory);
             int counter = 0;
-            string[] searchResults = new string[] { };
+            List<string> searchResults = new List<string>();
             foreach (string file in allFiles)
             {
                 string name = Path.GetFileName(file);
                 if (name.Contains(pattern))
                 {
-                    searchResults.Append(file);
                     counter++;
+                    searchResults.Add(file);
                 }
             }
             if (counter == 0)
@@ -42,18 +44,18 @@ namespace Searcher.BusinessLogic
         }
 
         //get file and string and return files with the string in contant
-        public string[] GetFilesByContent(string directory, string pattern)
+        public List <string> GetFilesByContent(string directory, string pattern)
         {
-            string[] allFiles = GetAllFiles(directory);
+            List<string> allFiles = GetAllFiles(directory);
             int counter = 0;
-            string[] searchResults = null;
+            List <string> searchResults = new List<string>();
             foreach (string file in allFiles)
             {
                 string fileContext = File.ReadAllText(file);
                 if (fileContext.Contains(pattern))
                 {
                     counter++;
-                    searchResults.Append(file);
+                    searchResults.Add(file);
                 }
             }
             if (counter == 0)

@@ -71,7 +71,7 @@ namespace Searcher
 
         private void searchButton_Click(object sender, EventArgs e)
         {
-            string[] listOfFiles = new string[] {};
+            List<string> listOfFiles = new List<string>();
             if (!Directory.Exists(currentPath))
             {
                 MessageBox.Show("תיקייה לא קיימת");
@@ -91,9 +91,10 @@ namespace Searcher
             foreach (var result in listOfFiles)
             {
                 counter++;
-                searchResults += counter + "." + result + "\n";
+                string name = Path.GetFileName(result);
+                searchResults += counter + "." + name + "\n";
             }
-            MessageBox.Show(searchResults);
+            MessageBox.Show(searchResults, "", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
         }
     }
 }

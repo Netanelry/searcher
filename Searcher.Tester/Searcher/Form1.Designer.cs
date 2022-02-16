@@ -166,7 +166,7 @@
             this.searchButton.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.searchButton.Location = new System.Drawing.Point(23, 306);
             this.searchButton.Name = "searchButton";
-            this.searchButton.Size = new System.Drawing.Size(83, 80);
+            this.searchButton.Size = new System.Drawing.Size(89, 87);
             this.searchButton.TabIndex = 12;
             this.searchButton.UseVisualStyleBackColor = true;
             this.searchButton.Click += new System.EventHandler(this.searchButton_Click);
@@ -189,7 +189,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.LightBlue;
-            this.ClientSize = new System.Drawing.Size(455, 452);
+            this.ClientSize = new System.Drawing.Size(455, 664);
             this.Controls.Add(this.searchButton);
             this.Controls.Add(this.FolderButtonExp);
             this.Controls.Add(this.panel1);
