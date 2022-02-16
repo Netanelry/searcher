@@ -86,6 +86,11 @@ namespace Searcher
                 string pattern = fileNameTextBox.Text;
                 listOfFiles = bl.GetFilesByName(currentPath, pattern);
             }
+            else if (contextSearchButton.Checked)
+            {
+                string pattern = fileNameTextBox.Text;
+                listOfFiles = bl.GetFilesByContent(currentPath, pattern);
+            }
             string searchResults = "";
             int counter = 0;
             foreach (var result in listOfFiles)
@@ -94,7 +99,7 @@ namespace Searcher
                 string name = Path.GetFileName(result);
                 searchResults += counter + "." + name + "\n";
             }
-            MessageBox.Show(searchResults, "", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading);
+            MessageBox.Show(searchResults, "", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
         }
     }
 }
