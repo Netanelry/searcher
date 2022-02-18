@@ -34,11 +34,11 @@ namespace Searcher.BusinessLogic
             }
             if (counter == 0)
             {
-                Console.WriteLine("Not found");
+                Console.WriteLine("לא נמצא");
             }
             else
             {
-                Console.WriteLine($"{counter} file(s) found");
+                Console.WriteLine($"{counter} קבצים נמצאו");
             }
             return searchResults;
         }
@@ -70,7 +70,7 @@ namespace Searcher.BusinessLogic
         }
 
         //delete file or all files
-        public void DeleteFiles(string[] listOffiles, string name = null)
+        public void DeleteFiles(List<string> listOffiles, string name = null)
         {
             if (name == null)
             {
@@ -89,11 +89,9 @@ namespace Searcher.BusinessLogic
                     }
                 }
             }
-
         }
-
-        //moving file to a new location
-        public void MoveFiles(string[] listOfFiles, string oldPath, string newPath)
+            //moving file to a new location
+            public void MoveFiles(List<string> listOfFiles, string oldPath, string newPath)
         {
             foreach (string file in listOfFiles)
             {

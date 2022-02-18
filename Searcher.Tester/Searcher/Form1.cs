@@ -14,6 +14,7 @@ namespace Searcher
     public partial class Searcher : Form
     {
         string currentPath = "";
+        string desierdPath = "";
         BusinessLogic.BusinessLogic bl;
         public Searcher()
         {
@@ -66,7 +67,7 @@ namespace Searcher
 
         private void allFilesButton_CheckedChanged(object sender, EventArgs e)
         {
-            
+
         }
 
         private void searchButton_Click(object sender, EventArgs e)
@@ -90,16 +91,83 @@ namespace Searcher
             {
                 string pattern = fileNameTextBox.Text;
                 listOfFiles = bl.GetFilesByContent(currentPath, pattern);
+                string searchResults = "";
+                int counter = 0;
+                foreach (var result in listOfFiles)
+                {
+                    string name = Path.GetFileName(result);
+                    if (searchResults == "")
+                    {
+                        MessageBox.Show($"הביטוי {fileNameTextBox.Text} לא נמצא");
+                        return;
+                    }
+                    if (name.Contains(pattern))
+                    {
+                        counter++;
+                        searchResults += counter + "." + name + "\n";
+                    }
+                    MessageBox.Show(searchResults, $"{counter} קבצים נמצאו", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+
+                }
             }
-            string searchResults = "";
-            int counter = 0;
-            foreach (var result in listOfFiles)
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            FolderBrowserDialog fbd2 = new FolderBrowserDialog();
+            fbd2.RootFolder = Environment.SpecialFolder.Desktop;
+            fbd2.Description = "בחר תיקייה";
+            fbd2.ShowNewFolderButton = false;
+            if (fbd2.ShowDialog() == DialogResult.OK)
             {
-                counter++;
-                string name = Path.GetFileName(result);
-                searchResults += counter + "." + name + "\n";
+                actionChosenPath.Text = fbd2.SelectedPath;
+                desierdPath = fbd2.SelectedPath;
             }
-            MessageBox.Show(searchResults, "", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            List<string> listOfFiles = new List<string>();
+            if (!Directory.Exists(currentPath))
+            {
+                MessageBox.Show("תיקייה לא קיימת");
+                return;
+            }
+            if (currentPath == desierdPath)
+            {
+                MessageBox.Show("תיקיית המוצא ותיקיית היעד זהות");
+                return;
+            }
+            listOfFiles = bl.GetAllFiles(currentPath);
+            if (deleteFilesButton.Checked)
+            {
+                if (listOfFiles.Count == 0)
+                {
+                    MessageBox.Show("אין קבצים בתיקייה");
+                    return;
+                }
+                string name = fileName.Text;
+                if (fileName.Text == "" || fileName.Text == null)
+                {
+                    name = null;
+                }
+                bl.DeleteFiles(listOfFiles, name);
+            }
+            else if (transferFilesButton.Checked)
+            {
+                string chosenPath = actionChosenPath.Text;
+                if (!Directory.Exists(chosenPath))
+                {
+                    MessageBox.Show("תקיית יעד לא נבחרה");
+                    return;
+                }
+                bl.MoveFiles(listOfFiles, currentPath, desierdPath);
+            }
         }
     }
 }

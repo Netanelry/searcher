@@ -104,5 +104,11 @@
       <Name>Searcher.BusinessLogic</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noatun_play_start_arrow_6048.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\noatun_play_start_arrow_60481.png" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
