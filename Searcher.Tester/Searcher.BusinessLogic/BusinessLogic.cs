@@ -69,38 +69,23 @@ namespace Searcher.BusinessLogic
             return searchResults;
         }
 
-        //delete file or all files
-        public void DeleteFiles(List<string> listOffiles, string name = null)
+        //delete  all files
+        public void DeleteFiles(string path, bool isConfirmed)
         {
-            if (name == null)
-            {
-                foreach (string file in listOffiles)
-                {
-                    Directory.Delete(file);
-                }
-            }
-            else
-            {
-                foreach (string file in listOffiles)
-                {
-                    if ((Path.GetFileName(file)) == name)
-                    {
-                        Directory.Delete(file);
-                    }
-                }
-            }
+            Directory.Delete(path, isConfirmed);
         }
-            //moving file to a new location
-            public void MoveFiles(List<string> listOfFiles, string oldPath, string newPath)
+
+        //moving file to a new location
+        public void MoveFiles(List<string> listOfFiles, string oldPath, string newPath)
         {
-            foreach (string file in listOfFiles)
+            foreach (var file in listOfFiles)
             {
                 File.Move(oldPath, newPath);
             }
         }
 
         //change file name
-        public void ChangeFileNames(string[] listOfFiles, string oldName, string newName)
+        public void ChangeFileNames(List<string> listOfFiles, string oldName, string newName)
         {
             foreach (string file in listOfFiles)
             {

@@ -13,9 +13,14 @@ namespace Searcher
 {
     public partial class Searcher : Form
     {
+        BusinessLogic.BusinessLogic bl;
+
         string currentPath = "";
         string desierdPath = "";
-        BusinessLogic.BusinessLogic bl;
+        string pattern = "";
+        string searchResults = "";
+        int counter = 0;
+
         public Searcher()
         {
             InitializeComponent();
@@ -75,42 +80,44 @@ namespace Searcher
             List<string> listOfFiles = new List<string>();
             if (!Directory.Exists(currentPath))
             {
-                MessageBox.Show("תיקייה לא קיימת");
+                MessageBox.Show("תיקייה לא קיימת", "הודעת מערכת");
                 return;
             }
+            counter = 0;
+            searchResults = "";
             if (allFilesButton.Checked)
             {
                 listOfFiles = bl.GetAllFiles(currentPath);
             }
             else if (nameSearchButton.Checked)
             {
-                string pattern = fileNameTextBox.Text;
+                pattern = fileNameTextBox.Text;
                 listOfFiles = bl.GetFilesByName(currentPath, pattern);
+                fileNameTextBox.Text = "";
             }
             else if (contextSearchButton.Checked)
             {
-                string pattern = fileNameTextBox.Text;
+                pattern = fileContextTextBox.Text;
                 listOfFiles = bl.GetFilesByContent(currentPath, pattern);
-                string searchResults = "";
-                int counter = 0;
-                foreach (var result in listOfFiles)
+                fileContextTextBox.Text = "";
+            }
+            foreach (var result in listOfFiles)
+            {
+                string name = Path.GetFileName(result);
+                if (name.Contains(pattern))
                 {
-                    string name = Path.GetFileName(result);
-                    if (searchResults == "")
-                    {
-                        MessageBox.Show($"הביטוי {fileNameTextBox.Text} לא נמצא");
-                        return;
-                    }
-                    if (name.Contains(pattern))
-                    {
-                        counter++;
-                        searchResults += counter + "." + name + "\n";
-                    }
-                    MessageBox.Show(searchResults, $"{counter} קבצים נמצאו", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
-
+                    counter++;
+                    searchResults += counter + ". " + name + "\n";
                 }
             }
+            if (counter == 0)
+            {
+                MessageBox.Show($"הביטוי \"{pattern}\" לא נמצא", "הודעת מערכת");
+                return;
+            }
+            MessageBox.Show(searchResults, $"{counter} קבצים נמצאו", MessageBoxButtons.OK, MessageBoxIcon.None, MessageBoxDefaultButton.Button1, MessageBoxOptions.RtlReading | MessageBoxOptions.RightAlign);
         }
+
 
         private void button1_Click_1(object sender, EventArgs e)
         {
@@ -135,12 +142,12 @@ namespace Searcher
             List<string> listOfFiles = new List<string>();
             if (!Directory.Exists(currentPath))
             {
-                MessageBox.Show("תיקייה לא קיימת");
+                MessageBox.Show("תיקייה לא קיימת", "הודעת מערכת");
                 return;
             }
             if (currentPath == desierdPath)
             {
-                MessageBox.Show("תיקיית המוצא ותיקיית היעד זהות");
+                MessageBox.Show("תיקיית המוצא ותיקיית היעד זהות", "הודעת מערכת");
                 return;
             }
             listOfFiles = bl.GetAllFiles(currentPath);
@@ -148,26 +155,50 @@ namespace Searcher
             {
                 if (listOfFiles.Count == 0)
                 {
-                    MessageBox.Show("אין קבצים בתיקייה");
+                    MessageBox.Show("אין קבצים בתיקייה", "הודעת מערכת");
                     return;
                 }
-                string name = fileName.Text;
-                if (fileName.Text == "" || fileName.Text == null)
+                DialogResult toDelete = MessageBox.Show("?האם אתה בטוח שברצונך למחוק את כל הקבצים", "הודעת מערכת", MessageBoxButtons.YesNo);
+                if (toDelete == DialogResult.No)
                 {
-                    name = null;
+                    return;
                 }
-                bl.DeleteFiles(listOfFiles, name);
+                bool isSure = true; 
+                bl.DeleteFiles(currentPath, isSure);
             }
             else if (transferFilesButton.Checked)
             {
                 string chosenPath = actionChosenPath.Text;
                 if (!Directory.Exists(chosenPath))
                 {
-                    MessageBox.Show("תקיית יעד לא נבחרה");
+                    MessageBox.Show("תקיית יעד לא קיימת", "הודעת מערכת");
                     return;
+                }
+                if (actionChosenPath.Text == "")
+                {
+                    MessageBox.Show("לא נבחרה תיקיית יעד", "הודעת מערכת");
                 }
                 bl.MoveFiles(listOfFiles, currentPath, desierdPath);
             }
+            else if (switchInName.Checked)
+            {
+
+            }
+        }
+
+        private void deleteFilesButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+           
+        }
+
+        private void actionChosenPath_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
