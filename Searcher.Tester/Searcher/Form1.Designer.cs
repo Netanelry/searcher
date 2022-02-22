@@ -51,7 +51,7 @@
             this.switchToContext = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.switchFromContext = new System.Windows.Forms.TextBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
+            this.switchInContext = new System.Windows.Forms.RadioButton();
             this.panel2 = new System.Windows.Forms.Panel();
             this.button1 = new System.Windows.Forms.Button();
             this.searchButton = new System.Windows.Forms.Button();
@@ -245,32 +245,34 @@
             // switchFromName
             // 
             this.switchFromName.Font = new System.Drawing.Font("Varela Round", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.switchFromName.Location = new System.Drawing.Point(156, 91);
+            this.switchFromName.Location = new System.Drawing.Point(178, 92);
             this.switchFromName.Name = "switchFromName";
             this.switchFromName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.switchFromName.Size = new System.Drawing.Size(111, 23);
             this.switchFromName.TabIndex = 21;
             this.switchFromName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.switchFromName.TextChanged += new System.EventHandler(this.switchFromName_TextChanged);
             // 
             // switchInName
             // 
             this.switchInName.AutoSize = true;
             this.switchInName.Font = new System.Drawing.Font("Varela Round", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.switchInName.Location = new System.Drawing.Point(273, 84);
+            this.switchInName.Location = new System.Drawing.Point(286, 86);
             this.switchInName.Name = "switchInName";
             this.switchInName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.switchInName.Size = new System.Drawing.Size(149, 31);
+            this.switchInName.Size = new System.Drawing.Size(136, 31);
             this.switchInName.TabIndex = 20;
             this.switchInName.TabStop = true;
-            this.switchInName.Text = "החלף בשם מ";
+            this.switchInName.Text = "החלף שם מ";
             this.switchInName.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.switchInName.UseVisualStyleBackColor = true;
+            this.switchInName.CheckedChanged += new System.EventHandler(this.switchInName_CheckedChanged);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Varela Round", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.label3.Location = new System.Drawing.Point(128, 88);
+            this.label3.Location = new System.Drawing.Point(149, 88);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(23, 27);
             this.label3.TabIndex = 22;
@@ -282,14 +284,14 @@
             this.switchToName.Location = new System.Drawing.Point(18, 92);
             this.switchToName.Name = "switchToName";
             this.switchToName.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.switchToName.Size = new System.Drawing.Size(104, 23);
+            this.switchToName.Size = new System.Drawing.Size(125, 23);
             this.switchToName.TabIndex = 23;
             this.switchToName.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // switchToContext
             // 
             this.switchToContext.Font = new System.Drawing.Font("Varela Round", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.switchToContext.Location = new System.Drawing.Point(18, 130);
+            this.switchToContext.Location = new System.Drawing.Point(18, 128);
             this.switchToContext.Name = "switchToContext";
             this.switchToContext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.switchToContext.Size = new System.Drawing.Size(104, 23);
@@ -309,34 +311,34 @@
             // switchFromContext
             // 
             this.switchFromContext.Font = new System.Drawing.Font("Varela Round", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.switchFromContext.Location = new System.Drawing.Point(156, 129);
+            this.switchFromContext.Location = new System.Drawing.Point(157, 128);
             this.switchFromContext.Name = "switchFromContext";
             this.switchFromContext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
             this.switchFromContext.Size = new System.Drawing.Size(111, 23);
             this.switchFromContext.TabIndex = 25;
             this.switchFromContext.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // radioButton1
+            // switchInContext
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Font = new System.Drawing.Font("Varela Round", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
-            this.radioButton1.Location = new System.Drawing.Point(268, 121);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
-            this.radioButton1.Size = new System.Drawing.Size(154, 31);
-            this.radioButton1.TabIndex = 24;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "החלף בתוכן מ";
-            this.radioButton1.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.radioButton1.UseVisualStyleBackColor = true;
-            this.radioButton1.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            this.switchInContext.AutoSize = true;
+            this.switchInContext.Font = new System.Drawing.Font("Varela Round", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(177)));
+            this.switchInContext.Location = new System.Drawing.Point(268, 121);
+            this.switchInContext.Name = "switchInContext";
+            this.switchInContext.RightToLeft = System.Windows.Forms.RightToLeft.Yes;
+            this.switchInContext.Size = new System.Drawing.Size(154, 31);
+            this.switchInContext.TabIndex = 24;
+            this.switchInContext.TabStop = true;
+            this.switchInContext.Text = "החלף בתוכן מ";
+            this.switchInContext.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.switchInContext.UseVisualStyleBackColor = true;
+            this.switchInContext.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
             // 
             // panel2
             // 
             this.panel2.Controls.Add(this.switchToContext);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.switchFromContext);
-            this.panel2.Controls.Add(this.radioButton1);
+            this.panel2.Controls.Add(this.switchInContext);
             this.panel2.Controls.Add(this.switchToName);
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.switchFromName);
@@ -445,7 +447,7 @@
         private System.Windows.Forms.TextBox switchToContext;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox switchFromContext;
-        private System.Windows.Forms.RadioButton radioButton1;
+        private System.Windows.Forms.RadioButton switchInContext;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.Button button1;
     }

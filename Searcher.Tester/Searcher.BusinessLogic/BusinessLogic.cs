@@ -85,16 +85,13 @@ namespace Searcher.BusinessLogic
         }
 
         //change file name
-        public void ChangeFileNames(List<string> listOfFiles, string oldName, string newName)
+        public void ChangeFileName(string oldName, string newName)
         {
-            foreach (string file in listOfFiles)
-            {
                 File.Move(oldName, newName);
-            }
         }
 
         //change the file contant
-        public void ChangeFileContext(string[] listOfFiles, string originalPattern, string newPattern)
+        public void ChangeFileContext(List<string> listOfFiles, string originalPattern, string newPattern)
         {
             foreach (string file in listOfFiles)
             {

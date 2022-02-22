@@ -182,7 +182,21 @@ namespace Searcher
             }
             else if (switchInName.Checked)
             {
-
+                if (switchFromName.Text == "" || switchToName.Text == "")
+                {
+                    MessageBox.Show("עליך למלא את 2 תיבות הטקסט הרלוונטיות", "הודעת מערכת");
+                    return;
+                }
+                if (switchFromName.Text == switchToName.Text)
+                {
+                    MessageBox.Show("השם הקיים והשם החדש הינם זהים", "הודעת מערכת");
+                    return;
+                }
+                bl.ChangeFileName(switchFromName.Text, switchToName.Text);
+            }
+            else if (switchInContext.Checked)
+            {
+                bl.ChangeFileContext(listOfFiles, switchFromContext.Text, switchToContext.Text);
             }
         }
 
@@ -197,6 +211,16 @@ namespace Searcher
         }
 
         private void actionChosenPath_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void switchInName_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void switchFromName_TextChanged(object sender, EventArgs e)
         {
 
         }
