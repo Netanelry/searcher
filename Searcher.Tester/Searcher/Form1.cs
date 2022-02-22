@@ -192,7 +192,11 @@ namespace Searcher
                     MessageBox.Show("השם הקיים והשם החדש הינם זהים", "הודעת מערכת");
                     return;
                 }
-                bl.ChangeFileName(switchFromName.Text, switchToName.Text);
+                string oldName = currentPath + "\\" + switchFromName.Text;
+                string newName = currentPath + "\\" + switchToName.Text;
+                bl.ChangeFileName(oldName, newName);
+                MessageBox.Show("בוצע בהצלחה", "הודעת מערכת");
+
             }
             else if (switchInContext.Checked)
             {
