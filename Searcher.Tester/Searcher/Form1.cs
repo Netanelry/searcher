@@ -228,5 +228,10 @@ namespace Searcher
         {
 
         }
+
+        private void transferFilesButton_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

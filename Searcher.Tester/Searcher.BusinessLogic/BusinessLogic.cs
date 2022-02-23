@@ -76,11 +76,11 @@ namespace Searcher.BusinessLogic
         }
 
         //moving file to a new location
-        public void MoveFiles(List<string> listOfFiles, string oldPath, string newPath)
+        public void MoveFiles(List<string> listOfFiles, string newPath)
         {
             foreach (var file in listOfFiles)
             {
-                File.Move(oldPath, newPath);
+                File.Move(file, newPath);
             }
         }
 

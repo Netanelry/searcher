@@ -219,6 +219,7 @@
             this.transferFilesButton.Text = "העבר קבצים ל:";
             this.transferFilesButton.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.transferFilesButton.UseVisualStyleBackColor = true;
+            this.transferFilesButton.CheckedChanged += new System.EventHandler(this.transferFilesButton_CheckedChanged);
             // 
             // actionChosenPath
             // 
